@@ -25,7 +25,7 @@ public class ExpireableFilter {
       e.printStackTrace();
     }
 
-    return ageInDays > expiryDays;
+    return expiryDays > 0 && ageInDays > expiryDays;
   }
 
   public boolean isFilterExpired(GitHubPullRequest pullRequest, int expiryDays) {

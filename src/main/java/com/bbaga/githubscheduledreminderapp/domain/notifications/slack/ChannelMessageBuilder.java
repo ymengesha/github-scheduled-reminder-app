@@ -82,7 +82,10 @@ public class ChannelMessageBuilder implements ChannelMessageBuilderInterface {
         try {
             mergeableState = pullRequest.getMergeableState();
         } catch (IOException ignored) {
+            logger.error(ignored.getMessage(), ignored);
         }
+
+        logger.info("This is the mergeable state '{}' of pull request {}", mergeableState, pullRequest.getNumber());
 
         if (List.of("clean", "has_hooks").contains(mergeableState)) {
             mergeableEmoji = ":large_green_circle:";
